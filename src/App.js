@@ -15,6 +15,7 @@ import SecurePage from "./pages/SecurePage";
 import facade from "./api/userFacade";
 import { LogIn, LoggedIn } from "./pages/Login";
 import jwt_decode from "jwt-decode";
+import Got from "./pages/Got";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -66,6 +67,9 @@ function App() {
           </Route>
           <Route exact path="/api-calls">
             <ApiCalls isLoggedIn={loggedIn} />
+          </Route>
+          <Route exact path="/Got">
+            <Got />
           </Route>
           <PrivateRoute path="/secure-page">
             <SecurePage />
