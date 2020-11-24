@@ -24,15 +24,19 @@ export default function Got() {
               </tr>
             </thead>
             <tbody>
-              {dataFromServer.map((m) => (
-                <tr key={m.fullName}>
-                  <td>{m.fullName}</td>
-                  <td>{m.title}</td>
-                  <td>{m.family}</td>
-                  <td>69</td>
-                  <button className="btn btn-primary">Upvote</button>
-                </tr>
-              ))}
+              {dataFromServer && dataFromServer.length > 0 ? (
+                dataFromServer.map((m) => (
+                  <tr key={m.fullName}>
+                    <td>{m.fullName}</td>
+                    <td>{m.title}</td>
+                    <td>{m.family}</td>
+                    <td>69</td>
+                    <button className="btn btn-primary">Upvote</button>
+                  </tr>
+                ))
+              ) : (
+                <h1>Loading..</h1>
+              )}
             </tbody>
           </table>
         </div>
