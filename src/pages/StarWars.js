@@ -3,10 +3,28 @@ import React, { useState, useEffect } from "react";
 
 export default function StarWars() {
   const [dataFromServer, setDataFromServer] = useState([]);
+  const [characterById, setCharacterById] = useState("");
+  let [characterById2] = "";
 
   useEffect(() => {
     starwarsFacade.getChars().then((data) => setDataFromServer(data.results));
   }, []);
+
+  function GetCharById(props) {
+    starwarsFacade.getCharById(props.id).then((data) => setCharacterById(data));
+    characterById2 = characterById;
+    if (characterById2 !== undefined) {
+      return (
+        <div>
+          <td>{characterById2.eye_color}</td>
+          <td>{characterById2.height}</td>
+          <td>{characterById2.mass}</td>
+        </div>
+      );
+    } else {
+      return "info is missing";
+    }
+  }
 
   return (
     <div className="container-fluid padding">
@@ -19,7 +37,7 @@ export default function StarWars() {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">UID</th>
-                <th scope="col">URL </th>
+                <th scope="col">Eye color, height, mass </th>
                 <th scope="col">Points </th>
               </tr>
             </thead>
@@ -28,7 +46,7 @@ export default function StarWars() {
                 <tr key={m.name}>
                   <td>{m.name}</td>
                   <td>{m.uid}</td>
-                  <td>{m.url}</td>
+                  <GetCharById id={m.uid} />
                   <td>69</td>
                   <button className="btn btn-primary">Upvote</button>
                 </tr>

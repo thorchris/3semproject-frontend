@@ -13,9 +13,23 @@ function getChars() {
     });
 }
 
+function getCharById(id) {
+    //CHANGE TO SERVER_URL 
+  return fetch("http://localhost:8080/jpareststarter/api/starwars/character/" + id)
+    .then(handleHttpErrors)
+    .catch((err) => {
+      if (err.status) {
+        err.fullError.then((e) => console.log(e.message));
+      } else {
+        console.log("Network error");
+      }
+    });
+}
+
 
 const apiFacade = {
   getChars,
+  getCharById, 
 };
 
 function makeOptions(method, body) {
