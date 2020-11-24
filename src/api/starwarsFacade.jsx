@@ -1,7 +1,8 @@
 import SERVER_URL from "../util/Settings";
 
 function getChars() {
-  return fetch(SERVER_URL + "starwars/all")
+    //CHANGE TO SERVER_URL 
+  return fetch("http://localhost:8080/jpareststarter/api/starwars/all")
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {

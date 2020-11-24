@@ -15,8 +15,18 @@ function NavBar({ loginMsg, isLoggedIn, user }) {
           </NavLink>
         </li>
         <li>
-          <NavLink activeClassName="active" to="/api-calls">
-            Api calls
+          <NavLink activeClassName="active" to="/harry-potter">
+            Harry Potter
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/got">
+            Game of Thrones
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/starwars">
+            Star Wars
           </NavLink>
         </li>
         {isLoggedIn && (

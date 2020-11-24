@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
+import StarWars from "./pages/StarWars";
 import ApiCalls from "./pages/ApiCalls";
 import NoMatch from "./components/NoMatch";
 import SecurePage from "./pages/SecurePage";
@@ -64,8 +65,8 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/star-wars">
-            <ApiCalls isLoggedIn={loggedIn} />
+          <Route exact path="/starwars">
+            <StarWars />
           </Route>
           <Route exact path="/api-calls">
             <ApiCalls isLoggedIn={loggedIn} />
