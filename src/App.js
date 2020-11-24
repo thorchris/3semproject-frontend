@@ -64,6 +64,9 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/star-wars">
+            <ApiCalls isLoggedIn={loggedIn} />
+          </Route>
           <Route exact path="/api-calls">
             <ApiCalls isLoggedIn={loggedIn} />
           </Route>
