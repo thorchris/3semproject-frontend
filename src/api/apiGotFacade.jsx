@@ -1,8 +1,6 @@
-//import SERVER_URL from "../util/Settings";
-// Online:
-//const SERVER_URL = "https://dachma.dk/3semProject_backend/api/got/all"
+import SERVER_URL from "../util/Settings";
 
-const SERVER_URL = "http://localhost:8080/jpareststarter";
+//const SERVER_URL = "http://localhost:8080/jpareststarter";
 
 function getCharacters() {
   return fetch(SERVER_URL + "/api/got/all")

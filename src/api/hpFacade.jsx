@@ -1,7 +1,7 @@
 import SERVER_URL from "../util/Settings";
 
 function getChars() {
-  return fetch(SERVER_URL + "all")
+  return fetch(SERVER_URL + "/api/hp")
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {
@@ -11,7 +11,6 @@ function getChars() {
       }
     });
 }
-
 
 const apiFacade = {
   getChars,
