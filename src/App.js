@@ -10,6 +10,7 @@ import {
 import Navbar from "./components/NavBar";
 import Home from "./pages/Home";
 import HarryPotter from "./pages/HarryPotter";
+import StarWars from "./pages/StarWars";
 import NoMatch from "./components/NoMatch";
 import SecurePage from "./pages/SecurePage";
 import facade from "./api/userFacade";
@@ -66,7 +67,10 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/harry-potter">
-            <HarryPotter/>
+            <HarryPotter />
+          </Route>
+          <Route exact path="/starwars">
+            <StarWars />
           </Route>
           <Route exact path="/Got">
             <Got />
