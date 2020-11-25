@@ -1,5 +1,6 @@
 import apiGotFacade from "../api/apiGotFacade";
 import React, { useState, useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Got() {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -35,7 +36,7 @@ export default function Got() {
                   </tr>
                 ))
               ) : (
-                <h1>Loading..</h1>
+                <Spinner animation="border" />
               )}
             </tbody>
           </table>
