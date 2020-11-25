@@ -1,30 +1,36 @@
 import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
 
+function GetCharById(props) {
+  const [characterById, setCharacterById] = useState("");
+  if (characterById === "") {
+    starwarsFacade.getCharById(props.id).then((data) => setCharacterById(data));
+  }
+  if (characterById !== undefined) {
+    return (
+      <>
+        <td>{characterById.eye_color}</td>
+        <td>{characterById.height}</td>
+        <td>{characterById.mass}</td>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <td>No data </td>
+        <td>No data</td>
+        <td>No data</td>
+      </>
+    );
+  }
+}
+
 export default function StarWars() {
   const [dataFromServer, setDataFromServer] = useState([]);
-  const [characterById, setCharacterById] = useState("");
-  let [characterById2] = "";
 
   useEffect(() => {
     starwarsFacade.getChars().then((data) => setDataFromServer(data.results));
   }, []);
-
-  function GetCharById(props) {
-    starwarsFacade.getCharById(props.id).then((data) => setCharacterById(data));
-    characterById2 = characterById;
-    if (characterById2 !== undefined) {
-      return (
-        <div>
-          <td>{characterById2.eye_color}</td>
-          <td>{characterById2.height}</td>
-          <td>{characterById2.mass}</td>
-        </div>
-      );
-    } else {
-      return "info is missing";
-    }
-  }
 
   return (
     <div className="container-fluid padding">
