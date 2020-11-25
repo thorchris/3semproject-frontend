@@ -1,5 +1,6 @@
 import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
@@ -48,15 +49,19 @@ export default function StarWars() {
               </tr>
             </thead>
             <tbody>
-              {dataFromServer.map((m) => (
-                <tr key={m.name}>
-                  <td>{m.name}</td>
-                  <td>{m.uid}</td>
-                  <GetCharById id={m.uid} />
-                  <td>69</td>
-                  <button className="btn btn-primary">Upvote</button>
-                </tr>
-              ))}
+              {dataFromServer && dataFromServer.length > 0 ? (
+                dataFromServer.map((m) => (
+                  <tr key={m.name}>
+                    <td>{m.name}</td>
+                    <td>{m.uid}</td>
+                    <GetCharById id={m.uid} />
+                    <td>69</td>
+                    <button className="btn btn-primary">Upvote</button>
+                  </tr>
+                ))
+              ) : (
+                <Spinner animation="border" />
+              )}
             </tbody>
           </table>
         </div>
