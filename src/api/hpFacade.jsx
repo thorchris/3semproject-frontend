@@ -1,7 +1,7 @@
 import SERVER_URL from "../util/Settings";
 
 function getChars() {
-  return fetch(SERVER_URL + "/api/hp")
+  return fetch(SERVER_URL + "/api/hp/all")
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {
