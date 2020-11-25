@@ -2,7 +2,7 @@ import SERVER_URL from "../util/Settings";
 
 function getChars() {
     //CHANGE TO SERVER_URL 
-  return fetch("http://localhost:8080/jpareststarter/api/starwars/all")
+  return fetch(SERVER_URL + "/api/starwars/all")
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {
@@ -15,7 +15,7 @@ function getChars() {
 
 function getCharById(id) {
     //CHANGE TO SERVER_URL 
-  return fetch("http://localhost:8080/jpareststarter/api/starwars/character/" + id)
+  return fetch(SERVER_URL + "/api/starwars/character/" + id)
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {
