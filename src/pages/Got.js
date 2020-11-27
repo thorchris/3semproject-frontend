@@ -1,4 +1,4 @@
-import apiGotFacade from "../api/apiGotFacade";
+import gotFacade from "../api/gotFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 
@@ -6,7 +6,7 @@ export default function Got() {
   const [dataFromServer, setDataFromServer] = useState([]);
 
   useEffect(() => {
-    apiGotFacade.getCharacters().then((data) => setDataFromServer(data));
+    gotFacade.getCharacters().then((data) => setDataFromServer(data));
   }, []);
 
   return (
