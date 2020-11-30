@@ -1,6 +1,12 @@
 import "./App.css";
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './global';
+import { theme } from './theme';
+import Burger from './components/Burger';
+import Menu from './components/Menu';
 import "bootstrap/dist/css/bootstrap.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useOnClickOutside } from './hooks';
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +36,11 @@ function App() {
     facade.login(user, pass).then((res) => setLoggedIn(true));
   };
 
+  const [open, setOpen] = useState(false);
+
+  const node = useRef(); 
+useOnClickOutside(node, () => setOpen(false));
+
   useEffect(() => {
     if (loggedIn) {
       const token = facade.getToken();
@@ -56,6 +67,10 @@ function App() {
 
   return (
     <div>
+      <ThemeProvider theme={theme}>
+        <>
+        <GlobalStyles />
+
       <Router>
         <Navbar
           loginMsg={loggedIn ? "Logout" : "Login"}
@@ -100,7 +115,14 @@ function App() {
             <NoMatch />
           </Route>
         </Switch>
+              <div>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </div>
       </Router>
+
+      </>
+      </ThemeProvider>
     </div>
   );
 }
