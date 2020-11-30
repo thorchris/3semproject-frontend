@@ -1,7 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import { Button, Form } from "react-bootstrap";
-import 'mdbreact/dist/css/mdb.css';
+import "mdbreact/dist/css/mdb.css";
 import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
+import Card from "../components/Card";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
               Search
             </MDBBtn>
           </Form>
+          <Card />
           <div className="col-2"></div>
         </div>
       </div>

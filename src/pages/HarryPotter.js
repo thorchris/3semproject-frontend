@@ -1,7 +1,7 @@
-import hpFacade from "../api/hpFacade"
+import hpFacade from "../api/hpFacade";
 import React, { useState, useEffect } from "react";
 
-export default function Jokes() {
+export default function HarryPotter() {
   const [dataFromServer, setDataFromServer] = useState([]);
 
   useEffect(() => {
