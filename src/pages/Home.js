@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
-import { Button, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import 'mdbreact/dist/css/mdb.css';
-import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
+import { MDBBtn } from "mdbreact";
 
 export default function Home() {
   return (

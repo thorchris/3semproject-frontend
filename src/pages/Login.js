@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import facade from "../api/userFacade";
 import CreateModal from "../components/RegisterUser";
+import { MDBBtn } from "mdbreact";
 
 export function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -29,9 +30,17 @@ export function LogIn({ login }) {
             <br />
             <input className="mb-2" placeholder="Password" id="password" />
             <br />
-            <button className="btn btn-primary" onClick={performLogin}>
+            <MDBBtn
+              outline
+              color="primary"
+              rounded
+              size="m"
+              type="submit"
+              className="mr-auto"
+              onClick={performLogin}
+            >
               Login
-            </button>
+            </MDBBtn>
             <CreateModal />
           </form>
           <div className="col-3"></div>
@@ -51,11 +60,11 @@ export function LoggedIn() {
   return (
     <div className="container-fluid padding">
       <div className="row">
-        <div className="col-3"></div>
-        <div className="col-6 text-center">
-          <h2 className="text-center mt-5 mb-2">Success welcome!</h2>
+        <div className="col-2"></div>
+        <div className="col-8 text-center">
+          <h2 className="text-center mt-5 mb-2">Welcome to Dachma Fandom</h2>
           <h3 className="text-center">{dataFromServer}</h3>
-          <div className="col-3"></div>
+          <div className="col-2"></div>
         </div>
       </div>
     </div>

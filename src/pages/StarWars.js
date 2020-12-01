@@ -1,6 +1,7 @@
 import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import { MDBBtn } from "mdbreact";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
@@ -38,7 +39,7 @@ export default function StarWars() {
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
-          <h2 className="text-center mt-5 mb-2">Star Wars characters</h2>
+          <h2 className="text-center mt-5 mb-2">Star Wars</h2>
           <table className="table">
             <thead>
               <tr>
@@ -56,7 +57,16 @@ export default function StarWars() {
                     <td>{m.uid}</td>
                     <GetCharById id={m.uid} />
                     <td>69</td>
-                    <button className="btn btn-primary">Upvote</button>
+                    <MDBBtn
+                      outline
+                      color="primary"
+                      rounded
+                      size="m"
+                      type="submit"
+                      className="mr-auto"
+                    >
+                      Upvote
+                    </MDBBtn>
                   </tr>
                 ))
               ) : (

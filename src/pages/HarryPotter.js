@@ -1,11 +1,12 @@
 import hpFacade from "../api/hpFacade"
 import React, { useState, useEffect } from "react";
+import { MDBBtn } from "mdbreact";
 
 export default function Jokes() {
   const [dataFromServer, setDataFromServer] = useState([]);
 
   useEffect(() => {
-    hpFacade.getChars().then((data) => setDataFromServer(data.HpDTOList));
+    hpFacade.getChars().then((data) => setDataFromServer(data.hpDTOList));
   }, []);
 
   return (
@@ -32,7 +33,16 @@ export default function Jokes() {
                   <td>{m.dateOfBirth}</td>
                   <td>{m.ancestry}</td>
                   <td>69</td>
-                  <button className="btn btn-primary">Upvote</button>
+                  <MDBBtn
+                      outline
+                      color="primary"
+                      rounded
+                      size="m"
+                      type="submit"
+                      className="mr-auto"
+                    >
+                      Upvote
+                    </MDBBtn>
                 </tr>
               ))}
             </tbody>

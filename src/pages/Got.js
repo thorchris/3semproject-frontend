@@ -1,6 +1,7 @@
 import gotFacade from "../api/gotFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import { MDBBtn } from "mdbreact";
 
 export default function Got() {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -14,7 +15,7 @@ export default function Got() {
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
-          <h2 className="text-center mt-5 mb-2">Game of thrones characters</h2>
+          <h2 className="text-center mt-5 mb-2">Game of thrones</h2>
           <table className="table">
             <thead>
               <tr>
@@ -32,7 +33,16 @@ export default function Got() {
                     <td>{m.title}</td>
                     <td>{m.family}</td>
                     <td>69</td>
-                    <button className="btn btn-primary">Upvote</button>
+                    <MDBBtn
+                      outline
+                      color="primary"
+                      rounded
+                      size="m"
+                      type="submit"
+                      className="mr-auto"
+                    >
+                      Upvote
+                    </MDBBtn>
                   </tr>
                 ))
               ) : (
