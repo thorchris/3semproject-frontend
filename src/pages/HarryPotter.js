@@ -1,11 +1,13 @@
-import hpFacade from "../api/hpFacade"
+import hpFacade from "../api/hpFacade";
 import React, { useState, useEffect } from "react";
+import GetVotesByChar from "../components/Vote";
 
-export default function Jokes() {
+export default function HarryPotter() {
   const [dataFromServer, setDataFromServer] = useState([]);
+  console.log(dataFromServer);
 
   useEffect(() => {
-    hpFacade.getChars().then((data) => setDataFromServer(data.HpDTOList));
+    hpFacade.getChars().then((data) => setDataFromServer(data.hpDTOList));
   }, []);
 
   return (
@@ -31,8 +33,7 @@ export default function Jokes() {
                   <td>{m.house}</td>
                   <td>{m.dateOfBirth}</td>
                   <td>{m.ancestry}</td>
-                  <td>69</td>
-                  <button className="btn btn-primary">Upvote</button>
+                  <GetVotesByChar characterName={m.name} />
                 </tr>
               ))}
             </tbody>
