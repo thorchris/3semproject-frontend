@@ -29,9 +29,10 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   img {
+    padding-top: 20px;
     border-radius: 5px;
     height: auto;
-    width: 10rem;
+    width: 12rem;
   }
 
   a {

@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Form } from "react-bootstrap";
 import 'mdbreact/dist/css/mdb.css';
 import { MDBBtn } from "mdbreact";
-import Dachma from "./Dachma.png"
+import Dachma from "./dachma6.svg"
 
 export default function Home() {
   return (

@@ -21,7 +21,7 @@ export default function Jokes() {
                 <th scope="col">Name</th>
                 <th scope="col">House</th>
                 <th scope="col">Birthdate </th>
-                <th scope="col">Actor</th>
+                <th scope="col">Ancestry</th>
                 <th scope="col">Points</th>
               </tr>
             </thead>
