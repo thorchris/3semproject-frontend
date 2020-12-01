@@ -1,6 +1,7 @@
 import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import GetVotesByChar from "../components/Vote";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
@@ -44,7 +45,9 @@ export default function StarWars() {
               <tr>
                 <th scope="col">Name</th>
                 <th scope="col">UID</th>
-                <th scope="col">Eye color, height, mass </th>
+                <th scope="col">Eye color </th>
+                <th scope="col">Height </th>
+                <th scope="col">Mass </th>
                 <th scope="col">Points </th>
               </tr>
             </thead>
@@ -55,8 +58,7 @@ export default function StarWars() {
                     <td>{m.name}</td>
                     <td>{m.uid}</td>
                     <GetCharById id={m.uid} />
-                    <td>69</td>
-                    <button className="btn btn-primary">Upvote</button>
+                    <GetVotesByChar characterName={m.name} />
                   </tr>
                 ))
               ) : (

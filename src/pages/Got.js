@@ -1,6 +1,7 @@
 import gotFacade from "../api/gotFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
+import GetVotesByChar from "../components/Vote";
 
 export default function Got() {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -31,8 +32,7 @@ export default function Got() {
                     <td>{m.fullName}</td>
                     <td>{m.title}</td>
                     <td>{m.family}</td>
-                    <td>69</td>
-                    <button className="btn btn-primary">Upvote</button>
+                    <GetVotesByChar characterName={m.fullName} />
                   </tr>
                 ))
               ) : (
