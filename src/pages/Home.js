@@ -3,6 +3,9 @@ import { Button, Form } from "react-bootstrap";
 import "mdbreact/dist/css/mdb.css";
 import { MDBCol, MDBFormInline, MDBBtn } from "mdbreact";
 import Card from "../components/Card";
+import gotImg from "../images/GOT.jpg";
+import hpImg from "../images/HarryPotter.jpg";
+import swImg from "../images/starwars.jpg";
 
 export default function Home() {
   return (
@@ -27,7 +30,17 @@ export default function Home() {
               Search
             </MDBBtn>
           </Form>
-          <Card />
+          <div
+            className="row"
+            style={{
+              justifyContent: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Card imgToDisplay={gotImg} />
+            <Card imgToDisplay={hpImg} />
+            <Card imgToDisplay={swImg} />
+          </div>
           <div className="col-2"></div>
         </div>
       </div>

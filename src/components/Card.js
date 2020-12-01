@@ -1,31 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
-import gotImg from "../images/GOT.jpg";
 
-function FlippingCardPage() {
-  const [flipped1, setFlipped1] = useState(false);
-
+function Card({ imgToDisplay }) {
   return (
-    <div maxWidth="100%" maxHeight="100%">
+    <div style={{ maxWidth: "350px", maxHeight: "800px" }}>
       <Flippy
-        flipOnClick={true} // default false
+        flipOnHover={true} // default false
         flipDirection="horizontal" // horizontal or vertical
       >
-        <FrontSide
-          style={{
-            backgroundColor: "transparent",
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <img src={gotImg} style={{ Width: "33%", height: "33%" }} />
+        <FrontSide>
+          <img
+            src={imgToDisplay}
+            style={{
+              display: "flex",
+              maxWidth: "100%",
+              maxHeight: "180px",
+              justifyContent: "center",
+            }}
+          />
         </FrontSide>
         <BackSide
           style={{
-            backgroundColor: "#175852",
+            backgroundColor: "",
             display: "flex",
             alignItems: "center",
+            maxWidth: "100%",
+            maxHeight: "100%",
             justifyContent: "center",
             flexDirection: "column",
           }}
@@ -35,4 +35,4 @@ function FlippingCardPage() {
   );
 }
 
-export default FlippingCardPage;
+export default Card;
