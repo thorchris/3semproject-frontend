@@ -4,6 +4,9 @@ import React, { useState } from "react";
 export default function GetVotesByChar(props) {
   const [voteByCharacter, setVoteByCharacter] = useState("");
   const loggedIn = props.loggedIn;
+  const user = props.user;
+  let userName = user.username;
+  const whoVotedList = props.whoVotedList;
 
   function getData() {
     voteFacade
@@ -16,9 +19,27 @@ export default function GetVotesByChar(props) {
   }
 
   function UpvoteCharacter(props) {
+    let characterName = props.characterName;
+
     function upvote() {
-      voteFacade.upvoteCharacter(props.characterName);
-      getData();
+      let isInTheList = whoVotedList.some(
+        (whoVoted) =>
+          whoVoted["userName"] === `${userName}` &&
+          whoVoted["characterName"] === `${characterName}`
+      );
+
+      if (!isInTheList) {
+        voteFacade.upvoteCharacter(characterName);
+        whoVotedList.push({
+          userName,
+          characterName,
+        });
+        getData();
+      } else {
+        console.log("Du har stemt");
+        getData();
+      }
+      console.log(whoVotedList);
     }
 
     return (

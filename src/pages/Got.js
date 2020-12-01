@@ -6,6 +6,8 @@ import GetVotesByChar from "../components/Vote";
 export default function Got(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
   const loggedIn = props.loggedIn;
+  const whoVotedList = props.whoVotedList;
+  const user = props.user;
 
   useEffect(() => {
     gotFacade.getCharacters().then((data) => setDataFromServer(data));
@@ -36,6 +38,8 @@ export default function Got(props) {
                     <GetVotesByChar
                       loggedIn={loggedIn}
                       characterName={m.fullName}
+                      user={user}
+                      whoVotedList={whoVotedList}
                     />
                   </tr>
                 ))

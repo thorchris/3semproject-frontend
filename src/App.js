@@ -21,6 +21,8 @@ import Got from "./pages/Got";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState("");
+  let empty = "";
+  const whoVotedList = [{ empty, empty }];
 
   const logout = () => {
     facade.logout();
@@ -67,13 +69,21 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/harry-potter">
-            <HarryPotter loggedIn={loggedIn} />
+            <HarryPotter
+              loggedIn={loggedIn}
+              user={user}
+              whoVotedList={whoVotedList}
+            />
           </Route>
           <Route exact path="/starwars">
-            <StarWars loggedIn={loggedIn} />
+            <StarWars
+              loggedIn={loggedIn}
+              user={user}
+              whoVotedList={whoVotedList}
+            />
           </Route>
           <Route exact path="/Got">
-            <Got loggedIn={loggedIn} />
+            <Got loggedIn={loggedIn} user={user} whoVotedList={whoVotedList} />
           </Route>
           <PrivateRoute path="/secure-page">
             <SecurePage />

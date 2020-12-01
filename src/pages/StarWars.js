@@ -31,6 +31,8 @@ function GetCharById(props) {
 export default function StarWars(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
   const loggedIn = props.loggedIn;
+  const user = props.user;
+  const whoVotedList = props.whoVotedList;
 
   useEffect(() => {
     starwarsFacade.getChars().then((data) => setDataFromServer(data.results));
@@ -62,7 +64,9 @@ export default function StarWars(props) {
                     <GetCharById id={m.uid} />
                     <GetVotesByChar
                       loggedIn={loggedIn}
+                      user={user}
                       characterName={m.name}
+                      whoVotedList={whoVotedList}
                     />
                   </tr>
                 ))

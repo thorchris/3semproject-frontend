@@ -6,6 +6,8 @@ import Spinner from "react-bootstrap/Spinner";
 export default function HarryPotter(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
   const loggedIn = props.loggedIn;
+  const user = props.user;
+  const whoVotedList = props.whoVotedList;
 
   useEffect(() => {
     hpFacade.getChars().then((data) => setDataFromServer(data.hpDTOList));
@@ -38,6 +40,8 @@ export default function HarryPotter(props) {
                     <GetVotesByChar
                       loggedIn={loggedIn}
                       characterName={m.name}
+                      user={user}
+                      whoVotedList={whoVotedList}
                     />
                   </tr>
                 ))
