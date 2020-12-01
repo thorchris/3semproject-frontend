@@ -19,7 +19,7 @@ import facade from "./api/userFacade";
 import { LogIn, LoggedIn } from "./pages/Login";
 import jwt_decode from "jwt-decode";
 import Got from "./pages/Got";
-import Sidemenu from "./sidemenu"
+import Sidemenu from "./Sidemenu"
 import "./sidemenu.css"
 import { MDBBtn } from "mdbreact";
 

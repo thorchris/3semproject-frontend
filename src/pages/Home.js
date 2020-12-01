@@ -2,13 +2,15 @@ import "bootstrap/dist/css/bootstrap.css";
 import { Form } from "react-bootstrap";
 import 'mdbreact/dist/css/mdb.css';
 import { MDBBtn } from "mdbreact";
+import Dachma from "./Dachma.png"
 
 export default function Home() {
   return (
     <div className="container-fluid padding">
+      <img src={Dachma} alt=""></img>
       <div className="row">
-        <div className="col-2"></div>
-        <div className="col-8 text-center">
+        <div className="col-3"></div>
+        <div className="col-6 text-center">
           <h4 className="mt-5">Search for your favorite character</h4>
           <Form>
             <Form.Control placeholder="Search here.." />
@@ -26,7 +28,7 @@ export default function Home() {
               Search
             </MDBBtn>
           </Form>
-          <div className="col-2"></div>
+          <div className="col-3"></div>
         </div>
       </div>
     </div>
