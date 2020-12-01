@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 export default function GetVotesByChar(props) {
   const [voteByCharacter, setVoteByCharacter] = useState("");
+  const [hasVoted, setHasVoted] = useState(false);
   const loggedIn = props.loggedIn;
   const user = props.user;
   let userName = user.username;
@@ -35,22 +36,33 @@ export default function GetVotesByChar(props) {
           characterName,
         });
         getData();
+        setHasVoted(false);
       } else {
+        setHasVoted(true);
         console.log("Du har stemt");
         getData();
       }
       console.log(whoVotedList);
     }
-
-    return (
-      <>
-        <td>
-          <button onClick={upvote} className="btn btn-primary">
-            Upvote
-          </button>
-        </td>
-      </>
-    );
+    if (hasVoted === false) {
+      return (
+        <>
+          <td>
+            <button onClick={upvote} className="btn btn-primary">
+              Upvote
+            </button>
+          </td>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <td>
+            <p>Du har allerede stemt på: {characterName}</p>
+          </td>
+        </>
+      );
+    }
   }
 
   if (voteByCharacter !== undefined) {
