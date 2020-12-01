@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import GetVotesByChar from "../components/Vote";
 
-export default function Got() {
+export default function Got(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
+  const loggedIn = props.loggedIn;
 
   useEffect(() => {
     gotFacade.getCharacters().then((data) => setDataFromServer(data));
@@ -32,7 +33,10 @@ export default function Got() {
                     <td>{m.fullName}</td>
                     <td>{m.title}</td>
                     <td>{m.family}</td>
-                    <GetVotesByChar characterName={m.fullName} />
+                    <GetVotesByChar
+                      loggedIn={loggedIn}
+                      characterName={m.fullName}
+                    />
                   </tr>
                 ))
               ) : (

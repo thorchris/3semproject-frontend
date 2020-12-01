@@ -5,6 +5,7 @@ import GetVotesByChar from "../components/Vote";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
+
   if (characterById === "") {
     starwarsFacade.getCharById(props.id).then((data) => setCharacterById(data));
   }
@@ -27,8 +28,9 @@ function GetCharById(props) {
   }
 }
 
-export default function StarWars() {
+export default function StarWars(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
+  const loggedIn = props.loggedIn;
 
   useEffect(() => {
     starwarsFacade.getChars().then((data) => setDataFromServer(data.results));
@@ -58,7 +60,10 @@ export default function StarWars() {
                     <td>{m.name}</td>
                     <td>{m.uid}</td>
                     <GetCharById id={m.uid} />
-                    <GetVotesByChar characterName={m.name} />
+                    <GetVotesByChar
+                      loggedIn={loggedIn}
+                      characterName={m.name}
+                    />
                   </tr>
                 ))
               ) : (

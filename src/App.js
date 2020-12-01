@@ -67,13 +67,13 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/harry-potter">
-            <HarryPotter />
+            <HarryPotter loggedIn={loggedIn} />
           </Route>
           <Route exact path="/starwars">
-            <StarWars />
+            <StarWars loggedIn={loggedIn} />
           </Route>
           <Route exact path="/Got">
-            <Got />
+            <Got loggedIn={loggedIn} />
           </Route>
           <PrivateRoute path="/secure-page">
             <SecurePage />

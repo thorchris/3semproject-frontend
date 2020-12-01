@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 export default function GetVotesByChar(props) {
   const [voteByCharacter, setVoteByCharacter] = useState("");
+  const loggedIn = props.loggedIn;
 
   function getData() {
     voteFacade
@@ -35,7 +36,11 @@ export default function GetVotesByChar(props) {
     return (
       <>
         <td>{voteByCharacter.voteScore}</td>
-        <UpvoteCharacter characterName={props.characterName} />
+        {loggedIn ? (
+          <UpvoteCharacter characterName={props.characterName} />
+        ) : (
+          <p> Login to upvote</p>
+        )}
       </>
     );
   } else {
