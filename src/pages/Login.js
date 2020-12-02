@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import facade from "../api/userFacade";
 import CreateModal from "../components/RegisterUser";
 import { MDBBtn } from "mdbreact";
+import Dachma from "../images/dachma6.svg";
 
 export function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -21,6 +22,7 @@ export function LogIn({ login }) {
 
   return (
     <div className="container-fluid padding">
+      <img className="logo"  src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">

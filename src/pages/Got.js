@@ -2,6 +2,7 @@ import gotFacade from "../api/gotFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import GetVotesByChar from "../components/Vote";
+import Dachma from "../images/dachma6.svg";
 
 export default function Got(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -15,6 +16,7 @@ export default function Got(props) {
 
   return (
     <div className="container-fluid padding">
+      <img className="logo"  src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">

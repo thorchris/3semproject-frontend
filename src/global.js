@@ -28,7 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
   }
 
-  img {
+  .logo {
     padding-top: 20px;
     border-radius: 5px;
     height: auto;

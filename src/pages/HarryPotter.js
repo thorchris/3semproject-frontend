@@ -2,6 +2,7 @@ import hpFacade from "../api/hpFacade";
 import React, { useState, useEffect } from "react";
 import GetVotesByChar from "../components/Vote";
 import Spinner from "react-bootstrap/Spinner";
+import Dachma from "../images/dachma6.svg";
 
 export default function HarryPotter(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -15,6 +16,7 @@ export default function HarryPotter(props) {
 
   return (
     <div className="container-fluid padding">
+      <img className="logo"  src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">

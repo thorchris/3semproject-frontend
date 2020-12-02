@@ -2,6 +2,7 @@ import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import GetVotesByChar from "../components/Vote";
+import Dachma from "../images/dachma6.svg";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
@@ -40,6 +41,7 @@ export default function StarWars(props) {
 
   return (
     <div className="container-fluid padding">
+      <img className="logo" src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
