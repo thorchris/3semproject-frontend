@@ -77,26 +77,26 @@ function App() {
                 <Home />
               </Route>
               <Route exact path="/harry-potter">
-            <HarryPotter
-              loggedIn={loggedIn}
-              user={user}
-              whoVotedList={whoVotedList}
-            />
-          </Route>
-          <Route exact path="/starwars">
-            <StarWars
-              loggedIn={loggedIn}
-              user={user}
-              whoVotedList={whoVotedList}
-            />
-          </Route>
-          <Route exact path="/Got">
-            <Got 
-             loggedIn={loggedIn}
-             user={user}
-             whoVotedList={whoVotedList}
-             />
-          </Route>
+                <HarryPotter
+                  loggedIn={loggedIn}
+                  user={user}
+                  whoVotedList={whoVotedList}
+                />
+              </Route>
+              <Route exact path="/starwars">
+                <StarWars
+                  loggedIn={loggedIn}
+                  user={user}
+                  whoVotedList={whoVotedList}
+                />
+              </Route>
+              <Route exact path="/Got">
+                <Got
+                  loggedIn={loggedIn}
+                  user={user}
+                  whoVotedList={whoVotedList}
+                />
+              </Route>
               <PrivateRoute path="/secure-page">
                 <SecurePage />
               </PrivateRoute>
@@ -109,8 +109,15 @@ function App() {
                       <div className="col-3"></div>
                       <div className="col-6 text-center">
                         <LoggedIn />
-                        <MDBBtn outline color="primary" rounded size="m" className="mr-auto" onClick={logout}>
-                        Logout
+                        <MDBBtn
+                          outline
+                          color="primary"
+                          rounded
+                          size="m"
+                          className="mr-auto"
+                          onClick={logout}
+                        >
+                          Logout
                         </MDBBtn>
                       </div>
                       <div className="col-3"></div>

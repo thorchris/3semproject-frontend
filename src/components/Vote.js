@@ -1,5 +1,6 @@
 import voteFacade from "../api/voteFacade";
 import React, { useState } from "react";
+import { MDBBtn } from "mdbreact";
 
 export default function GetVotesByChar(props) {
   const [voteByCharacter, setVoteByCharacter] = useState("");
@@ -47,19 +48,23 @@ export default function GetVotesByChar(props) {
     if (hasVoted === false) {
       return (
         <>
-          <td>
-            <button onClick={upvote} className="btn btn-primary">
+            <MDBBtn
+              onClick={upvote}
+              outline
+              color="primary"
+              rounded
+              size="m"
+              type="submit"
+              className="mr-auto"
+            >
               Upvote
-            </button>
-          </td>
+            </MDBBtn>
         </>
       );
     } else {
       return (
         <>
-          <td>
-            <p>Du har allerede stemt på: {characterName}</p>
-          </td>
+            <p>Du har stemt på: {characterName}</p>
         </>
       );
     }

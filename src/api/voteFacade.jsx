@@ -1,11 +1,8 @@
 import SERVER_URL from "../util/Settings";
 
-const localhost = "http://localhost:8080/jpareststarter" ; 
-
 function upvoteCharacter(charactername) {
-    //CHANGE TO SERVER_URL 
     const options = makeOptions("POST",charactername)
-    return fetch(localhost + "/api/vote/upvote/" + charactername, options)
+    return fetch(SERVER_URL + "/api/vote/upvote/" + charactername, options)
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {
@@ -17,8 +14,7 @@ function upvoteCharacter(charactername) {
 }
 
 function getCharactersVotes(charactername) {
-    //CHANGE TO SERVER_URL 
-  return fetch(localhost + "/api/vote/" + charactername)
+  return fetch(SERVER_URL + "/api/vote/" + charactername)
     .then(handleHttpErrors)
     .catch((err) => {
       if (err.status) {

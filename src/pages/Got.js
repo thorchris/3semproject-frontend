@@ -2,7 +2,6 @@ import gotFacade from "../api/gotFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import GetVotesByChar from "../components/Vote";
-import { MDBBtn } from "mdbreact";
 
 export default function Got(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -42,16 +41,6 @@ export default function Got(props) {
                       user={user}
                       whoVotedList={whoVotedList}
                     />
-                    <MDBBtn
-                      outline
-                      color="primary"
-                      rounded
-                      size="m"
-                      type="submit"
-                      className="mr-auto"
-                    >
-                      Upvote
-                    </MDBBtn>
                   </tr>
                 ))
               ) : (
