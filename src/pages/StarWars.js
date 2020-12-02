@@ -2,6 +2,7 @@ import starwarsFacade from "../api/starwarsFacade";
 import React, { useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 import GetVotesByChar from "../components/Vote";
+import { MDBBtn } from "mdbreact";
 
 function GetCharById(props) {
   const [characterById, setCharacterById] = useState("");
@@ -43,7 +44,7 @@ export default function StarWars(props) {
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
-          <h2 className="text-center mt-5 mb-2">Star Wars characters</h2>
+          <h2 className="text-center mt-5 mb-2">Star Wars</h2>
           <table className="table">
             <thead>
               <tr>
@@ -68,6 +69,17 @@ export default function StarWars(props) {
                       characterName={m.name}
                       whoVotedList={whoVotedList}
                     />
+                    <td>69</td>
+                    <MDBBtn
+                      outline
+                      color="primary"
+                      rounded
+                      size="m"
+                      type="submit"
+                      className="mr-auto"
+                    >
+                      Upvote
+                    </MDBBtn>
                   </tr>
                 ))
               ) : (

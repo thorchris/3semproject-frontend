@@ -2,6 +2,7 @@ import hpFacade from "../api/hpFacade";
 import React, { useState, useEffect } from "react";
 import GetVotesByChar from "../components/Vote";
 import Spinner from "react-bootstrap/Spinner";
+import { MDBBtn } from "mdbreact";
 
 export default function HarryPotter(props) {
   const [dataFromServer, setDataFromServer] = useState([]);
@@ -25,17 +26,17 @@ export default function HarryPotter(props) {
                 <th scope="col">Name</th>
                 <th scope="col">House</th>
                 <th scope="col">Birthdate </th>
-                <th scope="col">Actor</th>
+                <th scope="col">Ancestry</th>
                 <th scope="col">Points</th>
               </tr>
             </thead>
             <tbody>
-              {dataFromServer && dataFromServer.length > 0 ? (
+            {dataFromServer && dataFromServer.length > 0 ? (
                 dataFromServer.map((m) => (
                   <tr key={m.name}>
                     <td>{m.name}</td>
                     <td>{m.house}</td>
-                    <td>{m.dateOfBirth}</td>
+                    <td>{m.dayOfBirth}</td>
                     <td>{m.ancestry}</td>
                     <GetVotesByChar
                       loggedIn={loggedIn}
@@ -43,6 +44,16 @@ export default function HarryPotter(props) {
                       user={user}
                       whoVotedList={whoVotedList}
                     />
+                    <MDBBtn
+                      outline
+                      color="primary"
+                      rounded
+                      size="m"
+                      type="submit"
+                      className="mr-auto"
+                    >
+                      Upvote
+                    </MDBBtn>
                   </tr>
                 ))
               ) : (
