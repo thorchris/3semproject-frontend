@@ -30,7 +30,7 @@ export default function HarryPotter(props) {
               </tr>
             </thead>
             <tbody>
-            {dataFromServer && dataFromServer.length > 0 ? (
+              {dataFromServer && dataFromServer.length > 0 ? (
                 dataFromServer.map((m) => (
                   <tr key={m.name}>
                     <td>{m.name}</td>
