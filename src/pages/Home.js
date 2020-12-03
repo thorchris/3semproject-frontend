@@ -8,6 +8,7 @@ import Card from "../components/Card";
 import gotImg from "../images/GOT.jpg";
 import hpImg from "../images/HarryPotter.jpg";
 import swImg from "../images/starwars.jpg";
+import Search from "../components/Search";
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
               Type character name, movie, tv show etc.
             </Form.Text>
             <MDBBtn
+              onClick={Search("Harry Potter")}
               outline
               color="primary"
               rounded
