@@ -12,14 +12,13 @@ import Search from "../components/Search";
 import React, { useState, useEffect } from "react";
 
 export default function Home() {
-
   const [value, setValue] = useState(),
-  onInput = ({target:{value}}) => setValue(value),
-  onFormSubmit = e => {
-    e.preventDefault()
-    console.log(value)
-    setValue()
-  }
+    onInput = ({ target: { value } }) => setValue(value),
+    onFormSubmit = (e) => {
+      e.preventDefault();
+      console.log(value);
+      setValue();
+    };
 
   return (
     <div className="container-fluid padding">
@@ -43,8 +42,8 @@ export default function Home() {
             >
               Search
             </MDBBtn>
-            <Search lol={value}/>
           </Form>
+          <Search searchingFor={value} />
         </div>
         <div className="col-3"></div>
       </div>
