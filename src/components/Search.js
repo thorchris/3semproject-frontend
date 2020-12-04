@@ -15,23 +15,29 @@ export default function Search({ searchingForChar }) {
           ...data.gotList.results,
         ])
       );
-    console.log(allCharacters);
   };
 
-  useEffect(fetchData, [searchingForChar]);
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const searchFor = () => {
+    {
+      allCharacters
+        .filter((char) => char.name === searchingForChar)
+        .map((filtered) => <h1>Navn på char: {filtered.name}</h1>);
+    }
+  };
+
+  console.log(allCharacters);
+  console.log(searchingForChar);
 
   return (
     <>
       {allCharacters
-        /* .filter(
-          (char) =>
-            char.name.includes(searchingForChar) ||
-            char.fullName.includes(searchingForChar)
-        ) */
-        .map((filteredPerson) => (
-          <>
-            <h1>Her burde stå et navn: {filteredPerson.name}</h1>
-          </>
+        .filter((char) => char.name == searchingForChar)
+        .map((filtered) => (
+          <h1>Navn på char: {filtered.name}</h1>
         ))}
     </>
   );
