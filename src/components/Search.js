@@ -1,10 +1,11 @@
 import searchFacade from "../api/searchFacade";
 import React, { useState, useEffect } from "react";
 
-export default function Search(searchingForThisChar) {
+export default function Search({lol}) {
   const [allCharacters, setAllCharacters] = useState([]);
 
-  searchFacade
+  const fetchData = async () => {
+   return await searchFacade
     .searchForAllChars()
     .then((data) =>
       setAllCharacters([
@@ -13,11 +14,14 @@ export default function Search(searchingForThisChar) {
         ...data.gotList.results,
       ])
     );
+  }
+
+  console.log(fetchData())
 
   return (
     <>
       {allCharacters
-        .filter((char) => char.name === searchingForThisChar)
+        .filter((char) => char.name === lol)
         .map((filteredPerson) => (
           <>
             <h1>Her burde stå et navn: {filteredPerson.name}</h1>

@@ -43,6 +43,7 @@ export default function Home() {
             >
               Search
             </MDBBtn>
+            <Search lol={value}/>
           </Form>
         </div>
         <div className="col-3"></div>
