@@ -8,8 +8,24 @@ import Card from "../components/Card";
 import gotImg from "../images/GOT.jpg";
 import hpImg from "../images/HarryPotter.jpg";
 import swImg from "../images/starwars.jpg";
+import Search from "../components/Search";
+import React, { useState, useEffect } from "react";
 
 export default function Home() {
+  const [value, setValue] = useState("");
+
+  const onInput = ({ target: { value } }) => setValue(value);
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(value);
+    if (value != null) {
+      setValue(value);
+    } else {
+      setValue();
+    }
+  };
+
   return (
     <div className="container-fluid padding">
       <img className="logo" src={Dachma} alt=""></img>
@@ -17,8 +33,8 @@ export default function Home() {
         <div className="col-3"></div>
         <div className="col-6 text-center">
           <h4 className="mt-5">Search for your favorite character</h4>
-          <Form>
-            <Form.Control placeholder="Search here.." />
+          <Form onSubmit={onFormSubmit}>
+            <Form.Control onChange={onInput} placeholder="Search here.." />
             <Form.Text className="text-muted">
               Type character name, movie, tv show etc.
             </Form.Text>
@@ -33,6 +49,7 @@ export default function Home() {
               Search
             </MDBBtn>
           </Form>
+          <Search searchingForChar={value} />
         </div>
         <div className="col-3"></div>
       </div>
