@@ -30,15 +30,13 @@ export default function Search({ searchingForChar }) {
   };
 
   //console.log(allCharacters);
-  //console.log(searchingForChar);
+  console.log(searchingForChar);
 
   return (
     <>
       {allCharacters
         .filter((char) => char.name == searchingForChar)
-        .map((filtered) => (
-          <h1>Navn på char: {filtered.name}</h1>
-        ))}
+        .map((filtered) => filtered.name)}
     </>
   );
 }
