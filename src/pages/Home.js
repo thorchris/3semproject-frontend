@@ -12,13 +12,19 @@ import Search from "../components/Search";
 import React, { useState, useEffect } from "react";
 
 export default function Home() {
-  const [value, setValue] = useState(),
-    onInput = ({ target: { value } }) => setValue(value),
-    onFormSubmit = (e) => {
-      e.preventDefault();
-      console.log(value);
+  const [value, setValue] = useState("");
+
+  const onInput = ({ target: { value } }) => setValue(value);
+
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(value);
+    if (value != null) {
+      setValue(value);
+    } else {
       setValue();
-    };
+    }
+  };
 
   return (
     <div className="container-fluid padding">

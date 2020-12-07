@@ -21,16 +21,16 @@ export default function Search({ searchingForChar }) {
     fetchData();
   }, []);
 
-  const searchFor = () => {
-    {
-      allCharacters
-        .filter((char) => char.name === searchingForChar)
-        .map((filtered) => <h1>Navn på char: {filtered.name}</h1>);
-    }
+  const filterItems = () => {
+    return allCharacters.filter(
+      (char) =>
+        char["name"].toLowerCase().indexOf(searchingForChar.toLowerCase()) !==
+        -1
+    );
   };
 
-  console.log(allCharacters);
-  console.log(searchingForChar);
+  //console.log(allCharacters);
+  //console.log(searchingForChar);
 
   return (
     <>
