@@ -5,7 +5,7 @@ import CreateModal from "../components/RegisterUser";
 import { MDBBtn } from "mdbreact";
 import Dachma from "../images/dachma6.svg";
 
-export function LogIn({ login }) {
+export function LogIn({ login, errorMsg }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
 
@@ -19,10 +19,11 @@ export function LogIn({ login }) {
       [evt.target.id]: evt.target.value,
     });
   };
+  
 
   return (
     <div className="container-fluid padding">
-      <img className="logo"  src={Dachma} alt=""></img>
+      <img className="logo" src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
@@ -32,6 +33,9 @@ export function LogIn({ login }) {
             <br />
             <input className="mb-2" placeholder="Password" id="password" />
             <br />
+            <p className="errorBox text-center">
+              {errorMsg}
+            </p>
             <MDBBtn
               outline
               color="primary"

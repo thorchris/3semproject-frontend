@@ -28,14 +28,29 @@ function App() {
   const [user, setUser] = useState("");
   let empty = "";
   const whoVotedList = [{ empty, empty }];
+  const [errorMsg, setErrorMsg] = useState("");
 
   const logout = () => {
     facade.logout();
     setLoggedIn(false);
   };
+
   const login = (user, pass) => {
-    facade.login(user, pass).then((res) => setLoggedIn(true));
-  };
+    facade.login(user, pass)
+    .then((res) => {
+    setLoggedIn(true)
+    setErrorMsg("")
+    }).catch(err =>{
+      if(err.status){
+        err.fullError.then((err)=>{
+          setErrorMsg(err.message);
+          console.log("ERROR " + err);
+        })
+      }  
+      else{console.log("Network error"); }
+   });;
+  }
+
 
   useEffect(() => {
     if (loggedIn) {
@@ -102,7 +117,7 @@ function App() {
               </PrivateRoute>
               <Route path="/login-out">
                 {!loggedIn ? (
-                  <LogIn login={login} />
+                  <LogIn login={login} errorMsg={errorMsg} />
                 ) : (
                   <div className="container-fluid padding">
                     <div className="row">

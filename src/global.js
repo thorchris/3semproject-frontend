@@ -35,6 +35,15 @@ export const GlobalStyles = createGlobalStyle`
     width: 12rem;
   }
 
+  .errorBox{
+    color: #D8000C;
+    background-color: #FFBABA;
+    margin: auto;
+    padding: 10px;
+    border-radius: 3px 3px 3px 3px;
+    width: 40%
+  }
+
   a {
     color: ${({ theme }) => theme.primaryHover};
     text-decoration: none;
