@@ -48,23 +48,23 @@ export default function GetVotesByChar(props) {
     if (hasVoted === false) {
       return (
         <>
-            <MDBBtn
-              onClick={upvote}
-              outline
-              color="primary"
-              rounded
-              size="m"
-              type="submit"
-              className="mr-auto"
-            >
-              Upvote
-            </MDBBtn>
+          <MDBBtn
+            onClick={upvote}
+            outline
+            color="primary"
+            rounded
+            size="m"
+            type="submit"
+            className="mr-auto"
+          >
+            Upvote
+          </MDBBtn>
         </>
       );
     } else {
       return (
         <>
-            <p>Du har stemt på: {characterName}</p>
+          <p>Du har stemt på: {characterName}</p>
         </>
       );
     }

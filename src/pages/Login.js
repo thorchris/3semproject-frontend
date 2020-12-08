@@ -4,6 +4,7 @@ import facade from "../api/userFacade";
 import CreateModal from "../components/RegisterUser";
 import { MDBBtn } from "mdbreact";
 import Dachma from "../images/dachma6.svg";
+import "../components/registerstyles.css";
 
 export function LogIn({ login, errorMsg }) {
   const init = { username: "", password: "" };
@@ -29,9 +30,21 @@ export function LogIn({ login, errorMsg }) {
         <div className="col-6 text-center">
           <h2 className="text-center mb-2 mt-5">Login</h2>
           <form onChange={onChange}>
-            <input className="mb-2" placeholder="User Name" id="username" />
+            <input
+              className="mb-2"
+              placeholder="User name"
+              id="username"
+              className="login_input"
+            />
             <br />
-            <input className="mb-2" placeholder="Password" id="password" />
+            <input
+              className="mb-2"
+              className="login_input"
+              placeholder="Password"
+              id="password"
+              name="password"
+              type="password"
+            />
             <br />
             <p className="errorBox text-center">
               {errorMsg}

@@ -17,6 +17,7 @@
     "react-flippy": "^0.1.5",
     "react-focus-lock": "^2.5.0",
     "react-icons": "^3.11.0",
+    "react-native-password-field": "^1.0.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "styled-components": "^5.2.1",

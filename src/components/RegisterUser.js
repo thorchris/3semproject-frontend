@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import facade from "../api/userFacade";
 import { MDBBtn } from "mdbreact";
+import "./registerstyles.css";
 
 function CreateModal() {
   const [showModal, setShow] = useState(false);
@@ -29,36 +30,62 @@ function CreateModal() {
       <div>
         <p className="mt-2">Not a member yet? Register here:</p>
         <MDBBtn
-              outline
-              color="primary"
-              rounded
-              size="m"
-              className="mr-auto"
-              onClick={handleShow}
-            >
-              Register
-            </MDBBtn>
+          outline
+          color="primary"
+          rounded
+          size="m"
+          className="mr-auto"
+          onClick={handleShow}
+        >
+          Register
+        </MDBBtn>
       </div>
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title >Register your account here</Modal.Title>
+      <Modal className="full_modal" show={showModal} onHide={handleClose}>
+        <Modal.Header closeButton={true} className="modal_header" closeButton>
+          <Modal.Title>Register your account here</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="modal_header">
           <div>
             <form onChange={onChange}>
-              <input className="mb-2" placeholder="User Name" id="username" />
-              <br />
-              <input className="mb-2" placeholder="Password" id="password" />
+              <input
+                className="mb-2"
+                className="input"
+                placeholder="User name"
+                id="username"
+              />
+              <input
+                className="mb-2"
+                className="input"
+                placeholder="Password"
+                id="password"
+                name="password"
+                type="password"
+              />
             </form>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
+        <Modal.Footer className="modal_footer">
+          <MDBBtn
+            outline
+            color="primary"
+            rounded
+            size="m"
+            className="mr-auto"
+            className="modal_button"
+            onClick={handleClose}
+          >
             Close
-          </Button>
-          <Button variant="primary" onClick={createUser}>
+          </MDBBtn>
+          <MDBBtn
+            outline
+            color="primary"
+            rounded
+            size="m"
+            className="mr-auto"
+            onClick={createUser}
+          >
             Save Changes and register
-          </Button>
+          </MDBBtn>
         </Modal.Footer>
       </Modal>
     </>
