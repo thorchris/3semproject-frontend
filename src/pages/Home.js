@@ -9,66 +9,69 @@ import gotImg from "../images/GOT.jpg";
 import hpImg from "../images/HarryPotter.jpg";
 import swImg from "../images/starwars.jpg";
 import searchFacade from "../api/searchFacade";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import TextField from "@material-ui/core/TextField";
 
 const Auto = () => {
   const [display, setDisplay] = useState(false);
-  const [options, setOptions] = useState([]);
+  // const [options, setOptions] = useState([]);
   const [search, setSearch] = useState("");
 
-  // virker kun med 1 API/List af gangen.
-  // skal finde på en måde at tage alle
-  useEffect(() => {
+  const [swCharacters, setSwCharacters] = useState([]);
+  const [gotCharacters, setGotCharacters] = useState([]);
+  const [hpCharacters, setHpCharacters] = useState([]);
+
+  const fetchData = () => {
     searchFacade
       .searchForAllChars()
-      .then((data) => setOptions([...data.gotList.results]));
-  }, []);
-
-  const setCharFind = (char) => {
-    setSearch(char);
-    setDisplay(false);
+      .then((data) => setSwCharacters([...data.swList.results]));
+    searchFacade
+      .searchForAllChars()
+      .then((data) => setGotCharacters([...data.gotList.results]));
+    searchFacade
+      .searchForAllChars()
+      .then((data) => setHpCharacters([...data.hpList.hpDTOList]));
   };
 
-  console.log(options);
+  console.log(hpCharacters);
+  console.log(swCharacters);
+  console.log(gotCharacters);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <Form className="flex-container flex-column pos-rel">
-      <input
-        type="text"
-        id="auto"
-        onClick={() => setDisplay(!display)}
-        placeholder="Search here.."
-        value={search}
-        onChange={(event) => setSearch(event.target.value)}
+      <Autocomplete
+        id="combo-box-demo"
+        options={gotCharacters}
+        getOptionLabel={(gotCharacters) => gotCharacters.fullName}
+        style={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search for"
+            variant="outlined"
+            style={{ backgroundColor: "grey" }}
+          />
+        )}
       />
-      {display && (
-        <div className="autoContainer">
-          {options
-            .filter(({ fullName }) => {
-              if (search == "") {
-                return fullName;
-              } else if (
-                fullName.toLowerCase().includes(search.toLowerCase())
-              ) {
-                return fullName;
-              }
-            })
-            .map((data, i) => {
-              return (
-                <div
-                  className="option"
-                  key={i}
-                  onClick={() => setCharFind(data.fullName)}
-                >
-                  <span>
-                    {data.name}
-                    {data.fullName}
-                  </span>
-                </div>
-              );
-            })}
-        </div>
-      )}
+      <Autocomplete
+        id="combo-box-demo"
+        options={gotCharacters}
+        getOptionLabel={(gotCharacters) => gotCharacters.fullName}
+        style={{ width: 100 }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search for"
+            variant="outlined"
+            style={{ backgroundColor: "grey" }}
+          />
+        )}
+      />
       <Form.Text className="text-muted">
         Type character name, movie, tv show etc.
       </Form.Text>
