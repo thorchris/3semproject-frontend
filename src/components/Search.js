@@ -1,13 +1,16 @@
-import searchFacade from "../api/searchFacade";
 import React, { useState, useEffect } from "react";
-import Select from "react-select";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import TextField from "@material-ui/core/TextField";
+import searchFacade from "../api/searchFacade";
+import { MDBBtn } from "mdbreact";
+import { Form } from "react-bootstrap";
 
-export default function Search({ searchingForChar }) {
-  const init = [{ name: "" }];
-  const [allCharacters, setAllCharacters] = useState(init);
-  const [swCharacters, setSwCharacters] = useState(init);
-  const [gotCharacters, setGotCharacters] = useState(init);
-  const [hpCharacters, setHpCharacters] = useState([{ fullName: "" }]);
+export default function Search() {
+  const choices = ["Star Wars", "Game of Thrones", "Harry Potter"];
+  const [choice, setChoice] = useState("Game of Thrones");
+  const [swCharacters, setSwCharacters] = useState([]);
+  const [gotCharacters, setGotCharacters] = useState([]);
+  const [hpCharacters, setHpCharacters] = useState([]);
 
   const fetchData = () => {
     searchFacade
@@ -20,30 +23,94 @@ export default function Search({ searchingForChar }) {
       .searchForAllChars()
       .then((data) => setHpCharacters([...data.hpList.hpDTOList]));
   };
-  console.log("HP: " + hpCharacters);
-  console.log("SW: " + swCharacters);
-  console.log("GOT: " + gotCharacters);
+
+  console.log(hpCharacters);
+  console.log(swCharacters);
+  console.log(gotCharacters);
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const filterItems = () => {
-    return allCharacters.filter(
-      (char) =>
-        char["name"].toLowerCase().indexOf(searchingForChar.toLowerCase()) !==
-        -1
-    );
+  const getChoice = (choice) => {
+    if (choice === "Harry Potter") {
+      return hpCharacters;
+    }
+    if (choice === "Star Wars") {
+      return swCharacters;
+    }
+    if (choice === "Game of Thrones") {
+      return gotCharacters;
+    }
   };
 
-  //console.log(allCharacters);
-  console.log(searchingForChar);
+  const setOptionLabel = (choice) => {
+    if (choice === "Harry Potter") {
+      return (hpCharacters) => hpCharacters.name;
+    }
+    if (choice === "Star Wars") {
+      return (swCharacters) => swCharacters.name;
+    }
+    if (choice === "Game of Thrones") {
+      return (gotCharacters) => gotCharacters.fullName;
+    } else {
+      return null;
+    }
+  };
+
+  const handleChange = (choice) => {
+    if (choice === "Harry Potter" || "Game of Thrones" || "Star Wars") {
+      setChoice(choice);
+      console.log(choice);
+    } else {
+      setChoice("Game of Thrones");
+    }
+  };
 
   return (
-    <>
-      {allCharacters
-        .filter((char) => char.name == searchingForChar)
-        .map((filtered) => filtered.name)}
-    </>
+    <Form className="flex-container flex-column pos-rel">
+      <Autocomplete
+        id="combo-box-demo"
+        options={getChoice(choice)}
+        getOptionLabel={setOptionLabel(choice)}
+        style={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search for"
+            variant="outlined"
+            style={{ backgroundColor: "white" }}
+          />
+        )}
+      />
+      <Autocomplete
+        id="combo-box-demo"
+        options={choices}
+        style={{ width: 300 }}
+        onChange={(event, value) => handleChange(value)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={"Where are you searching?"}
+            value={choice}
+            variant="outlined"
+            style={{ backgroundColor: "white" }}
+          />
+        )}
+      />
+      <Form.Text className="text-muted">
+        Type character name, movie, tv show etc.
+      </Form.Text>
+      <MDBBtn
+        outline
+        color="primary"
+        rounded
+        size="m"
+        type="submit"
+        className="mr-auto"
+      >
+        Search
+      </MDBBtn>
+    </Form>
   );
 }
