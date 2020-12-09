@@ -17,7 +17,8 @@ const Auto = () => {
   const [display, setDisplay] = useState(false);
   // const [options, setOptions] = useState([]);
   const [search, setSearch] = useState("");
-
+  const choices = ["Star Wars", "Game of Thrones", "Harry Potter"];
+  const [choice, setChoice] = useState("Game of Thrones");
   const [swCharacters, setSwCharacters] = useState([]);
   const [gotCharacters, setGotCharacters] = useState([]);
   const [hpCharacters, setHpCharacters] = useState([]);
@@ -42,33 +43,69 @@ const Auto = () => {
     fetchData();
   }, []);
 
+  const getChoice = (choice) => {
+    if (choice === "Harry Potter") {
+      return hpCharacters;
+    }
+    if (choice === "Star Wars") {
+      return swCharacters;
+    }
+    if (choice === "Game of Thrones") {
+      return gotCharacters;
+    }
+  };
+
+  const setOptionLabel = (choice) => {
+    if (choice === "Harry Potter") {
+      return (hpCharacters) => hpCharacters.name;
+    }
+    if (choice === "Star Wars") {
+      return (swCharacters) => swCharacters.name;
+    }
+    if (choice === "Game of Thrones") {
+      return (gotCharacters) => gotCharacters.fullName;
+    } else {
+      return null;
+    }
+  };
+
+  const handleChange = (choice) => {
+    if (choice !== "Harry Potter" || "Game of Thrones" || "Star Wars") {
+      choice = "Game of Thrones";
+    }
+
+    setChoice(choice);
+    console.log(choice);
+  };
+
   return (
     <Form className="flex-container flex-column pos-rel">
       <Autocomplete
         id="combo-box-demo"
-        options={gotCharacters}
-        getOptionLabel={(gotCharacters) => gotCharacters.fullName}
+        options={getChoice(choice)}
+        getOptionLabel={setOptionLabel(choice)}
         style={{ width: 300 }}
         renderInput={(params) => (
           <TextField
             {...params}
             label="Search for"
             variant="outlined"
-            style={{ backgroundColor: "grey" }}
+            style={{ backgroundColor: "white" }}
           />
         )}
       />
       <Autocomplete
         id="combo-box-demo"
-        options={gotCharacters}
-        getOptionLabel={(gotCharacters) => gotCharacters.fullName}
-        style={{ width: 100 }}
+        options={choices}
+        style={{ width: 300 }}
+        onChange={(event, value) => handleChange(value)}
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Search for"
+            label={"Where are you searching?"}
+            value={choice}
             variant="outlined"
-            style={{ backgroundColor: "grey" }}
+            style={{ backgroundColor: "white" }}
           />
         )}
       />
