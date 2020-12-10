@@ -7,7 +7,6 @@ import gotImg from "../images/GOT.jpg";
 import hpImg from "../images/HarryPotter.jpg";
 import swImg from "../images/starwars.jpg";
 import Search from "../components/Search";
-import homestylecss from "../components/homestyle.css";
 
 export default function Home() {
   return (
@@ -29,7 +28,7 @@ export default function Home() {
           <p className="mt-2 text-muted text-center">
             Click to get info about a movie/tv show.
           </p>
-          <div className="flipcards">
+          <div className="flexDirection: row justifyContent: space-between">
             <Card imgToDisplay={gotImg} />
             <Card imgToDisplay={hpImg} />
             <Card imgToDisplay={swImg} />

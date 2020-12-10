@@ -1,16 +1,23 @@
 import React from "react";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
-import homestyle from "./homestyle.css";
 
 function Card({ imgToDisplay }) {
   return (
-    <div>
+    <div style={{ maxWidth: "350px", maxHeight: "800px" }}>
       <Flippy
         flipOnHover={true} // default false
         flipDirection="horizontal" // horizontal or vertical
       >
         <FrontSide>
-          <img className="imgsize" src={imgToDisplay} />
+          <img
+            src={imgToDisplay}
+            style={{
+              display: "flex",
+              maxWidth: "100%",
+              maxHeight: "180px",
+              justifyContent: "center",
+            }}
+          />
         </FrontSide>
         <BackSide
           style={{
