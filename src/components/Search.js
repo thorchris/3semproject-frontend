@@ -4,10 +4,15 @@ import TextField from "@material-ui/core/TextField";
 import searchFacade from "../api/searchFacade";
 import { MDBBtn } from "mdbreact";
 import { Form } from "react-bootstrap";
+import ShowCharacterInfo from "./ShowCharacterInfo";
+import searchCSS from "./searchcss.css";
 
 export default function Search() {
   const choices = ["Star Wars", "Game of Thrones", "Harry Potter"];
   const [choice, setChoice] = useState("Game of Thrones");
+  const [characterOfChoice, setCharacterOfChoice] = useState({
+    name: "Harry Potter",
+  });
   const [swCharacters, setSwCharacters] = useState([]);
   const [gotCharacters, setGotCharacters] = useState([]);
   const [hpCharacters, setHpCharacters] = useState([]);
@@ -23,10 +28,6 @@ export default function Search() {
       .searchForAllChars()
       .then((data) => setHpCharacters([...data.hpList.hpDTOList]));
   };
-
-  console.log(hpCharacters);
-  console.log(swCharacters);
-  console.log(gotCharacters);
 
   useEffect(() => {
     fetchData();
@@ -58,6 +59,15 @@ export default function Search() {
     }
   };
 
+  const handleCharChange = (choice) => {
+    if (choice !== undefined || null) {
+      setCharacterOfChoice(choice);
+      console.log(choice);
+    } else {
+      setChoice("John Snow");
+    }
+  };
+
   const handleChange = (choice) => {
     if (choice === "Harry Potter" || "Game of Thrones" || "Star Wars") {
       setChoice(choice);
@@ -69,24 +79,13 @@ export default function Search() {
 
   return (
     <Form className="flex-container flex-column pos-rel">
+      <Form.Text className="text-muted">
+        Search for your favourite character
+      </Form.Text>
       <Autocomplete
-        id="combo-box-demo"
-        options={getChoice(choice)}
-        getOptionLabel={setOptionLabel(choice)}
-        style={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search for"
-            variant="outlined"
-            style={{ backgroundColor: "white" }}
-          />
-        )}
-      />
-      <Autocomplete
+        className="autocomplete"
         id="combo-box-demo"
         options={choices}
-        style={{ width: 300 }}
         onChange={(event, value) => handleChange(value)}
         renderInput={(params) => (
           <TextField
@@ -98,19 +97,25 @@ export default function Search() {
           />
         )}
       />
-      <Form.Text className="text-muted">
-        Type character name, movie, tv show etc.
-      </Form.Text>
-      <MDBBtn
-        outline
-        color="primary"
-        rounded
-        size="m"
-        type="submit"
-        className="mr-auto"
-      >
-        Search
-      </MDBBtn>
+      <Autocomplete
+        className="autocomplete"
+        id="combo-box-demo"
+        options={getChoice(choice)}
+        getOptionLabel={setOptionLabel(choice)}
+        onChange={(event, value) => handleCharChange(value)}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search for"
+            variant="outlined"
+            style={{ backgroundColor: "white" }}
+          />
+        )}
+      />
+      <ShowCharacterInfo
+        fullName={characterOfChoice.fullName}
+        name={characterOfChoice.name}
+      />
     </Form>
   );
 }
