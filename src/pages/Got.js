@@ -16,11 +16,24 @@ export default function Got(props) {
 
   return (
     <div className="container-fluid padding">
-      <img className="logo"  src={Dachma} alt=""></img>
+      <img className="logo" src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
           <h2 className="text-center mt-5 mb-2">Game of thrones</h2>
+          <p>
+            Game of Thrones is an American fantasy drama television series
+            created by David Benioff and D. B. Weiss for HBO. It is an
+            adaptation of A Song of Ice and Fire, a series of fantasy novels by
+            George R. R. Martin, the first of which is A Game of Thrones. The
+            show was shot in the United Kingdom, Canada, Croatia, Iceland,
+            Malta, Morocco, and Spain. It premiered on HBO in the United States
+            on April 17, 2011, and concluding on May 19, 2019, with 73 episodes
+            broadcast over eight seasons.
+          </p>
+          <p className="text-muted">
+            In the table below you can vote for your favorite charactar!
+          </p>
           <table className="table">
             <thead>
               <tr>

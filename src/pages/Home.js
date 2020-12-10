@@ -3,10 +3,12 @@ import "mdbreact/dist/css/mdb.css";
 import Dachma from "../images/dachma6.svg";
 import "mdbreact/dist/css/mdb.css";
 import Card from "../components/Card";
-import gotImg from "../images/GOT.jpg";
-import hpImg from "../images/HarryPotter.jpg";
-import swImg from "../images/starwars.jpg";
+import { MDBBtn } from "mdbreact";
+import gotImg from "../images/Got2.png";
+import hpImg from "../images/HarryPotter2.png";
+import swImg from "../images/Sw2.png";
 import Search from "../components/Search";
+import ImageShadow from 'react-image-shadow';
 
 export default function Home() {
   return (
@@ -22,19 +24,23 @@ export default function Home() {
         <div className="col-3"></div>
       </div>
       <div className="row">
-        <div className="col-2"></div>
-        <div className="col-8">
+        <div className="col-3"></div>
+        <div className="col-6">
           <h4 className="mt-5 text-center">Current shows in the site:</h4>
           <p className="mt-2 text-muted text-center">
-            Click to get info about a movie/tv show.
+            Click the menu top right to navigate to a show!
           </p>
-          <div className="flexDirection: row justifyContent: space-between">
-            <Card imgToDisplay={gotImg} />
-            <Card imgToDisplay={hpImg} />
-            <Card imgToDisplay={swImg} />
-          </div>
+            <div className="gotImg">
+            <ImageShadow src={gotImg} alt="got"/>
+            </div>
+            <div className="hpImg">
+            <ImageShadow src={hpImg} alt="hp"/>
+            </div>
+            <div className="swImg">
+            <ImageShadow src={swImg} alt="sw"/>
+            </div>
         </div>
-        <div className="col-2"></div>
+        <div className="col-3"></div>
       </div>
     </div>
   );

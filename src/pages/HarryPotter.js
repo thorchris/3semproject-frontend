@@ -16,11 +16,24 @@ export default function HarryPotter(props) {
 
   return (
     <div className="container-fluid padding">
-      <img className="logo"  src={Dachma} alt=""></img>
+      <img className="logo" src={Dachma} alt=""></img>
       <div className="row">
         <div className="col-3"></div>
         <div className="col-6 text-center">
           <h2 className="text-center mt-5 mb-2">Harry Potter</h2>
+          <p>
+            Harry Potter is a series of seven fantasy novels written by British
+            author J. K. Rowling. The novels chronicle the lives of a young
+            wizard, Harry Potter, and his friends Hermione Granger and Ron
+            Weasley, all of whom are students at Hogwarts School of Witchcraft
+            and Wizardry. The main story arc concerns Harry's struggle against
+            Lord Voldemort, a dark wizard who intends to become immortal,
+            overthrow the wizard governing body known as the Ministry of Magic
+            and subjugate all wizards and Muggles (non-magical people).
+          </p>
+          <p className="text-muted">
+            In the table below you can vote for your favorite charactar!
+          </p>
           <table className="table">
             <thead>
               <tr>

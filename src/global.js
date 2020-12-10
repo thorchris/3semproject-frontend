@@ -44,8 +44,17 @@ export const GlobalStyles = createGlobalStyle`
     width: 40%
   }
 
+  .gotImg, .swImg, .hpImg{
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+    flex: 33.33%;
+    height: 250px;
+  }
+
+
   a {
     color: ${({ theme }) => theme.primaryHover};
     text-decoration: none;
   }
-`
+`;
