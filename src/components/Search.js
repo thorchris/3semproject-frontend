@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 import searchFacade from "../api/searchFacade";
-import { MDBBtn } from "mdbreact";
 import { Form } from "react-bootstrap";
 import ShowCharacterInfo from "./ShowCharacterInfo";
 import searchCSS from "./searchcss.css";

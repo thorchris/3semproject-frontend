@@ -2,8 +2,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "mdbreact/dist/css/mdb.css";
 import Dachma from "../images/dachma6.svg";
 import "mdbreact/dist/css/mdb.css";
-import Card from "../components/Card";
-import { MDBBtn } from "mdbreact";
 import gotImg from "../images/Got2.png";
 import hpImg from "../images/HarryPotter2.png";
 import swImg from "../images/Sw2.png";
