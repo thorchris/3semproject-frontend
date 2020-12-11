@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import facade from "../api/userFacade";
 import { MDBBtn } from "mdbreact";
 import "./registerstyles.css";
@@ -41,20 +41,14 @@ function CreateModal() {
         </MDBBtn>
       </div>
       <Modal className="full_modal" show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton={true} className="modal_header" closeButton>
+        <Modal.Header closeButton={true} className="modal_header">
           <Modal.Title>Register your account here</Modal.Title>
         </Modal.Header>
         <Modal.Body className="modal_header">
           <div>
             <form onChange={onChange}>
+              <input className="input" placeholder="User name" id="username" />
               <input
-                className="mb-2"
-                className="input"
-                placeholder="User name"
-                id="username"
-              />
-              <input
-                className="mb-2"
                 className="input"
                 placeholder="Password"
                 id="password"
@@ -70,7 +64,6 @@ function CreateModal() {
             color="primary"
             rounded
             size="m"
-            className="mr-auto"
             className="modal_button"
             onClick={handleClose}
           >
